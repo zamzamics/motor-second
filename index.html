@@ -2,7 +2,13 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <!-- Android & Mobile Theme Support -->
+  <meta name="theme-color" content="#0b0f19">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
   <title>GARASI MOTOR PRO | Jual Beli Motor Bekas Berkualitas & Bergaransi Resmi</title>
   <meta name="description" content="Showroom jual beli motor bekas bergaransi mesin hingga 6 bulan. 50+ titik inspeksi, surat 100% lengkap dan aman, melayani cash, kredit DP ringan, dan tukar tambah langsung via WhatsApp.">
   <meta name="keywords" content="jual beli motor bekas, showroom motor second, motor bekas bergaransi, kredit motor bekas, tukar tambah motor, motor seken jakarta">
@@ -94,6 +100,9 @@
         </button>
       </div>
     </div>
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
   </header>
 
   <!-- Hero Section -->
@@ -960,7 +969,7 @@
       <i class="fa-solid fa-handshake"></i>
       <span>Jual Motor</span>
     </a>
-    <button class="bottom-action-item wa-highlight" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya mau konsultasi pembelian motor bekas')">
+    <button class="bottom-action-item wa-highlight" id="bottomBarWaBtn">
       <i class="fa-brands fa-whatsapp"></i>
       <span>Chat WA</span>
     </button>
@@ -969,6 +978,7 @@
   <!-- Motorcycle Unit Detail Modal (Inspection & Full Specs) -->
   <div class="modal-overlay hidden" id="unitModalOverlay">
     <div class="modal-card unit-modal-card">
+      <div class="modal-sheet-handle"></div>
       <button class="modal-close-btn" id="unitModalClose"><i class="fa-solid fa-xmark"></i></button>
       
       <div class="modal-body-scrollable" id="unitModalBody">
@@ -980,6 +990,7 @@
   <!-- Dealer WhatsApp Number & Info Config Modal -->
   <div class="modal-overlay hidden" id="configModalOverlay">
     <div class="modal-card config-modal-card">
+      <div class="modal-sheet-handle"></div>
       <button class="modal-close-btn" id="configModalClose"><i class="fa-solid fa-xmark"></i></button>
       
       <div class="config-modal-header">

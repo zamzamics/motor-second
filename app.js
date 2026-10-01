@@ -802,12 +802,34 @@ function setupConfigModal() {
 // =============================================================================
 function setupFloatingWA() {
   const btn = document.getElementById('floatingWaBtn');
+  const bottomBarBtn = document.getElementById('bottomBarWaBtn');
   const popup = document.getElementById('waChatPopup');
   const closeBtn = document.getElementById('waPopupClose');
 
-  if (btn && popup) {
-    btn.addEventListener('click', () => {
-      popup.classList.toggle('hidden');
+  function togglePopup(e) {
+    if (e) e.stopPropagation();
+    if (!popup) return;
+    const isHidden = popup.classList.toggle('hidden');
+    // On small screens, prevent background scrolling when popup bottom sheet is active
+    if (!isHidden && window.innerWidth <= 768) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (btn) {
+    btn.addEventListener('click', togglePopup);
+  }
+
+  if (bottomBarBtn) {
+    bottomBarBtn.addEventListener('click', (e) => {
+      // If popup exists, toggle bottom sheet; otherwise fallback to direct WA
+      if (popup) {
+        togglePopup(e);
+      } else {
+        openDirectWhatsApp('Halo Garasi Motor Pro, saya mau konsultasi pembelian motor bekas');
+      }
     });
   }
 
@@ -815,6 +837,7 @@ function setupFloatingWA() {
     closeBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       popup.classList.add('hidden');
+      document.body.style.overflow = '';
     });
   }
 
@@ -822,8 +845,14 @@ function setupFloatingWA() {
   document.addEventListener('click', (e) => {
     if (popup && !popup.classList.contains('hidden')) {
       const wrapper = document.getElementById('floatingWaWrapper');
-      if (wrapper && !wrapper.contains(e.target)) {
+      const bottomBar = document.querySelector('.mobile-sticky-bar');
+      const clickedInsideWrapper = wrapper && wrapper.contains(e.target);
+      const clickedInsideBottomBar = bottomBar && bottomBar.contains(e.target);
+      const clickedInsidePopup = popup.contains(e.target);
+
+      if (!clickedInsideWrapper && !clickedInsideBottomBar && !clickedInsidePopup) {
         popup.classList.add('hidden');
+        document.body.style.overflow = '';
       }
     }
   });
@@ -833,23 +862,31 @@ function setupMobileDrawer() {
   const toggleBtn = document.getElementById('mobileMenuToggle');
   const drawer = document.getElementById('mobileDrawer');
   const closeBtn = document.getElementById('closeDrawerBtn');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
 
   if (toggleBtn && drawer) {
     toggleBtn.addEventListener('click', () => {
       drawer.classList.add('open');
+      if (backdrop) backdrop.classList.add('open');
+      document.body.style.overflow = 'hidden';
     });
   }
 
   if (closeBtn && drawer) {
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('open');
-    });
+    closeBtn.addEventListener('click', closeDrawer);
+  }
+
+  if (backdrop) {
+    backdrop.addEventListener('click', closeDrawer);
   }
 }
 
 function closeDrawer() {
   const drawer = document.getElementById('mobileDrawer');
   if (drawer) drawer.classList.remove('open');
+  const backdrop = document.getElementById('mobileDrawerBackdrop');
+  if (backdrop) backdrop.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // =============================================================================

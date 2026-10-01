@@ -59,6 +59,13 @@
   --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
   --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.55);
+
+  /* Android & Mobile Safe Areas */
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --bottom-bar-height: 62px;
 }
 
 /* Base Reset */
@@ -66,12 +73,17 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -80,8 +92,10 @@ body {
   color: var(--text-main);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+  width: 100%;
   -webkit-font-smoothing: antialiased;
-  padding-bottom: 70px; /* Space for mobile sticky bar */
+  padding-bottom: calc(var(--bottom-bar-height) + var(--safe-bottom) + 12px); /* Space for mobile sticky bar */
 }
 
 @media (min-width: 992px) {
@@ -364,26 +378,47 @@ button {
   }
 }
 
+/* Mobile Drawer Backdrop */
+.mobile-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1050;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-drawer-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* Mobile Drawer */
 .mobile-drawer {
   position: fixed;
   top: 0;
-  right: -100%;
-  width: 82%;
-  max-width: 320px;
+  right: 0;
+  width: min(84vw, 320px);
+  height: 100dvh;
   height: 100vh;
   background: var(--bg-secondary);
   border-left: 1px solid var(--border-color);
-  padding: 1.5rem;
-  z-index: 1000;
+  padding: calc(1.25rem + var(--safe-top)) 1.25rem calc(1.25rem + var(--safe-bottom));
+  z-index: 1100;
   display: flex;
   flex-direction: column;
-  transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer.open {
-  right: 0;
+  transform: translateX(0);
 }
 
 .mobile-drawer-header {
@@ -2445,15 +2480,17 @@ button {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 64px;
-  background: rgba(11, 15, 25, 0.95);
-  backdrop-filter: blur(16px);
+  height: calc(var(--bottom-bar-height) + var(--safe-bottom));
+  padding: 0 0.5rem var(--safe-bottom);
+  background: rgba(11, 15, 25, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-around;
   align-items: center;
   z-index: 980;
-  padding: 0 0.5rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
 }
 
 @media (min-width: 992px) {
@@ -2472,6 +2509,9 @@ button {
   font-size: 0.72rem;
   font-weight: 600;
   flex: 1;
+  min-height: 48px;
+  border-radius: var(--radius-sm);
+  transition: var(--transition-fast);
 }
 
 .bottom-action-item i {
@@ -2480,6 +2520,7 @@ button {
 
 .bottom-action-item:hover, .bottom-action-item:active {
   color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .bottom-action-item.wa-highlight {
@@ -2489,6 +2530,11 @@ button {
   border-radius: var(--radius-full);
   flex: 1.2;
   box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+}
+
+.bottom-action-item.wa-highlight:active {
+  transform: scale(0.96);
+  background: linear-gradient(135deg, #16a34a 0%, #15803d 100%);
 }
 
 .bottom-action-item.wa-highlight i {
@@ -2775,4 +2821,785 @@ button {
 .toast-success i {
   color: var(--wa-green);
   font-size: 1.2rem;
+}
+
+/* ==========================================================================
+   MOBILE & ANDROID RESPONSIVENESS SYSTEM
+   Optimized for Android smartphones (Samsung, Xiaomi, Vivo, Oppo, Realme, Pixel)
+   ========================================================================== */
+
+/* Modal Drag Sheet Handle for Android */
+.modal-sheet-handle {
+  display: none;
+}
+
+/* Touch Active States for Android */
+.btn:active, .filter-pill:active, .spec-chip:active, .agent-card:active, .quick-chip:active {
+  transform: scale(0.97);
+}
+
+/* Global Container Safe-Area Support */
+.container {
+  padding-left: max(1.25rem, var(--safe-left));
+  padding-right: max(1.25rem, var(--safe-right));
+}
+
+/* Tablet & Smaller Screens (< 992px) */
+@media (max-width: 991px) {
+  .site-header {
+    height: 64px;
+  }
+
+  .navbar-container {
+    height: 64px;
+  }
+
+  .logo-icon-box {
+    width: 38px;
+    height: 38px;
+    font-size: 1.15rem;
+    border-radius: 10px;
+  }
+
+  .brand-name {
+    font-size: 1.1rem;
+  }
+
+  .brand-tagline {
+    font-size: 0.64rem;
+  }
+
+  /* Keep header clean by using compact WA button */
+  .btn-wa-header span {
+    font-size: 0.8rem;
+  }
+
+  .hero-section {
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .calculator-card, .location-card {
+    padding: 1.75rem;
+  }
+}
+
+/* Mobile Screens - Android Devices (<= 768px) */
+@media (max-width: 768px) {
+  /* Top Announcement Bar */
+  .top-announcement-bar {
+    padding: 0.35rem 0;
+    font-size: 0.74rem;
+  }
+
+  .top-bar-content {
+    justify-content: center;
+    gap: 0.35rem 0.75rem;
+  }
+
+  .top-badge-text {
+    font-size: 0.73rem;
+    text-align: center;
+  }
+
+  .top-badge-text span:last-child {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .top-actions {
+    gap: 0.65rem;
+  }
+
+  .top-config-btn {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .dealer-phone-display {
+    font-size: 0.75rem;
+  }
+
+  /* Header adjustments: hide header WA button since sticky bottom bar has it */
+  .btn-wa-header {
+    display: none;
+  }
+
+  /* Hero Section */
+  .hero-section {
+    padding: 1.75rem 0 2.5rem;
+  }
+
+  .hero-container {
+    gap: 2rem;
+  }
+
+  .hero-pill-badge {
+    font-size: 0.74rem;
+    padding: 0.3rem 0.75rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.4rem);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.85rem;
+    word-break: break-word;
+  }
+
+  .hero-subtitle {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
+    min-height: 48px;
+    font-size: 0.94rem;
+  }
+
+  .hero-stats-grid {
+    gap: 0.65rem;
+  }
+
+  .stat-card {
+    padding: 0.75rem 0.5rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .stat-num {
+    font-size: 1.35rem;
+  }
+
+  .stat-label {
+    font-size: 0.68rem;
+  }
+
+  /* Hero Visual & Badges on Android */
+  .floating-badge {
+    padding: 0.45rem 0.75rem;
+    border-radius: 10px;
+    gap: 0.5rem;
+  }
+
+  .badge-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+  }
+
+  .badge-text strong {
+    font-size: 0.76rem;
+  }
+
+  .badge-text span {
+    font-size: 0.66rem;
+  }
+
+  .badge-warranty {
+    bottom: 0.65rem;
+    left: 0.65rem;
+  }
+
+  .badge-credit {
+    top: 0.65rem;
+    right: 0.65rem;
+  }
+
+  /* Catalog Section */
+  .catalog-section {
+    padding: 2.75rem 0;
+  }
+
+  .section-title {
+    font-size: clamp(1.5rem, 5.5vw, 2rem);
+  }
+
+  .section-subtitle {
+    font-size: 0.88rem;
+    margin-bottom: 1.75rem;
+  }
+
+  /* Interactive Filters - Android Native Swipable Chips */
+  .filter-controls-box {
+    padding: 1.15rem 0.9rem;
+    margin-bottom: 1.75rem;
+    border-radius: var(--radius-md);
+  }
+
+  .search-input-wrapper {
+    margin-bottom: 0.9rem;
+  }
+
+  .search-input-wrapper input {
+    font-size: 16px !important; /* Prevents auto-zoom on Android Chrome */
+    padding: 0.8rem 2.8rem 0.8rem 2.6rem;
+  }
+
+  .filter-group {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+    padding-bottom: 0.85rem;
+  }
+
+  /* Native horizontal swipe chips for Android */
+  .filter-pills, .category-pills {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    gap: 0.45rem;
+    width: calc(100% + 1.8rem);
+    margin: 0 -0.9rem;
+    padding: 0.2rem 0.9rem 0.5rem 0.9rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .filter-pills::-webkit-scrollbar,
+  .category-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-pill {
+    white-space: nowrap;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.78rem;
+    min-height: 38px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .filter-secondary-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.85rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .filter-selects {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .select-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    width: 100%;
+  }
+
+  .select-wrapper label {
+    font-size: 0.72rem;
+  }
+
+  .select-wrapper select {
+    width: 100%;
+    padding: 0.6rem 0.5rem;
+    font-size: 0.82rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .filter-status-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+  }
+
+  /* Motorcycle Grid & Cards on Android */
+  .motorcycle-grid {
+    gap: 1.25rem;
+  }
+
+  .motor-card {
+    border-radius: var(--radius-md);
+  }
+
+  .motor-card-body {
+    padding: 1.15rem;
+  }
+
+  .card-title-group {
+    margin-bottom: 0.65rem;
+  }
+
+  .motor-card-title {
+    font-size: 1.15rem;
+  }
+
+  .card-spec-grid {
+    gap: 0.35rem;
+    padding: 0.65rem;
+    border-radius: 10px;
+    margin-bottom: 0.9rem;
+  }
+
+  .spec-chip {
+    font-size: 0.74rem;
+  }
+
+  .card-pricing-box {
+    padding-top: 0.75rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .price-cash-val {
+    font-size: 1.3rem;
+  }
+
+  .card-actions {
+    gap: 0.5rem;
+  }
+
+  .btn-detail, .btn-wa-card {
+    min-height: 44px;
+    font-size: 0.82rem;
+    padding: 0.65rem 0.4rem;
+  }
+
+  /* Credit Calculator on Android */
+  .calculator-section {
+    padding: 2.75rem 0;
+  }
+
+  .calculator-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .calc-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .calc-icon-box {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+    border-radius: 12px;
+  }
+
+  .calc-title {
+    font-size: 1.35rem;
+  }
+
+  .calc-desc {
+    font-size: 0.84rem;
+  }
+
+  .calc-body-grid {
+    gap: 1.75rem;
+  }
+
+  .form-group {
+    margin-bottom: 1.15rem;
+  }
+
+  .form-control {
+    font-size: 16px !important; /* No zoom on Android focus */
+    padding: 0.75rem 0.85rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .form-control.with-prefix {
+    padding-left: 2.75rem;
+  }
+
+  /* Larger touch slider thumb for fingers */
+  .custom-range-slider::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+
+  .tenor-selector {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.4rem;
+  }
+
+  .tenor-btn {
+    min-height: 44px;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.2rem;
+  }
+
+  .result-box {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .result-price-large {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .result-breakdown {
+    gap: 0.65rem;
+    padding: 1rem 0;
+    margin-bottom: 1.25rem;
+    font-size: 0.84rem;
+  }
+
+  #btnSendCalcWa {
+    min-height: 48px;
+    font-size: 0.92rem;
+  }
+
+  /* Trade-in / Tukar Tambah Section */
+  .tradein-section {
+    padding: 2.75rem 0;
+  }
+
+  .tradein-wrapper {
+    gap: 2rem;
+  }
+
+  .tradein-lead {
+    font-size: 0.92rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .tradein-perks {
+    gap: 1rem;
+  }
+
+  .perk-item {
+    gap: 0.75rem;
+  }
+
+  .perk-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+  }
+
+  .perk-item h4 {
+    font-size: 0.98rem;
+  }
+
+  .perk-item p {
+    font-size: 0.82rem;
+  }
+
+  .tradein-form-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .form-card-header {
+    margin-bottom: 1.15rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .form-card-header h3 {
+    font-size: 1.18rem;
+  }
+
+  .tradein-form button[type="submit"] {
+    min-height: 48px;
+    font-size: 0.92rem;
+  }
+
+  /* Features & Inspection Section */
+  .features-section {
+    padding: 2.75rem 0;
+  }
+
+  .features-grid {
+    gap: 1rem;
+  }
+
+  .feature-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+  }
+
+  .feature-icon-wrapper {
+    width: 46px;
+    height: 46px;
+    font-size: 1.25rem;
+    margin-bottom: 0.9rem;
+    border-radius: 12px;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-text {
+    font-size: 0.84rem;
+  }
+
+  /* Testimonials Section */
+  .testimonials-section {
+    padding: 2.75rem 0;
+  }
+
+  .testi-showcase-grid {
+    gap: 1.5rem;
+  }
+
+  .handover-info {
+    padding: 1.25rem;
+  }
+
+  .handover-quote {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .review-box {
+    padding: 1.15rem;
+  }
+
+  /* FAQ Accordion */
+  .faq-section {
+    padding: 2.75rem 0;
+  }
+
+  .faq-question {
+    padding: 1rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .faq-answer {
+    padding: 0 1.15rem;
+    font-size: 0.86rem;
+  }
+
+  .faq-item.active .faq-answer {
+    padding-bottom: 1rem;
+  }
+
+  /* Location Section */
+  .location-section {
+    padding: 2.75rem 0;
+  }
+
+  .location-card {
+    padding: 1.25rem;
+    border-radius: var(--radius-md);
+    gap: 1.75rem;
+  }
+
+  .location-title {
+    font-size: 1.35rem;
+  }
+
+  .location-desc {
+    font-size: 0.88rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .location-details {
+    gap: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .location-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .location-buttons .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  .map-placeholder-card {
+    padding: 1.75rem 1rem;
+  }
+
+  /* Footer on Android */
+  .site-footer {
+    padding: 3rem 0 1.5rem;
+  }
+
+  .footer-content-grid {
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .social-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  /* ==========================================================================
+     Android Bottom Sheet Modal Styling (Inspection & Unit Detail)
+     ========================================================================== */
+  .modal-overlay {
+    padding: 0;
+    align-items: flex-end;
+  }
+
+  .unit-modal-card {
+    max-height: 92dvh;
+    max-height: 92vh;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    width: 100%;
+    animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .modal-sheet-handle {
+    width: 44px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: var(--radius-full);
+    margin: 0.65rem auto 0;
+    display: block;
+  }
+
+  .modal-close-btn {
+    top: 0.75rem;
+    right: 0.85rem;
+    width: 36px;
+    height: 36px;
+  }
+
+  .modal-body-scrollable {
+    padding: 1rem 1.15rem calc(1.5rem + var(--safe-bottom));
+  }
+
+  .modal-hero-split {
+    gap: 1.15rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .modal-quick-info h2 {
+    font-size: 1.35rem;
+  }
+
+  .modal-price-box {
+    margin: 0.75rem 0 1rem;
+    padding: 0.85rem;
+  }
+
+  .modal-price-val {
+    font-size: 1.5rem;
+  }
+
+  .inspection-box {
+    padding: 1rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .inspection-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .modal-cta-buttons {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .modal-cta-buttons .btn {
+    width: 100%;
+    min-height: 48px;
+  }
+
+  /* Config Modal on Mobile */
+  .config-modal-card {
+    max-height: 90dvh;
+    border-radius: 20px 20px 0 0;
+    padding: 1.5rem 1.25rem calc(1.5rem + var(--safe-bottom));
+    width: 100%;
+    animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .config-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .config-actions .btn {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  /* WhatsApp Consultation: Android Bottom Sheet */
+  .floating-wa-wrapper {
+    display: none; /* Handled with higher prominence by Mobile Sticky Bottom Bar */
+  }
+
+  .wa-chat-popup {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 22px 22px 0 0;
+    border-bottom: none;
+    z-index: 2500;
+    max-height: 85dvh;
+    animation: slideUpSheet 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.8);
+  }
+
+  .wa-popup-body {
+    max-height: 60dvh;
+    overflow-y: auto;
+    padding: 1.25rem 1.15rem calc(1.5rem + var(--safe-bottom));
+  }
+}
+
+/* Very Small Android Devices (<= 420px, e.g. compact Galaxy / Redmi) */
+@media (max-width: 420px) {
+  .brand-tagline {
+    display: none;
+  }
+
+  .filter-selects {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-title {
+    font-size: 1.7rem;
+  }
+
+  .card-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .tenor-selector {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .toast {
+    min-width: 240px;
+    font-size: 0.82rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }

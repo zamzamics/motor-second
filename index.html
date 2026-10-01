@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GARASI MOTOR PRO | Jual Beli Motor Bekas Berkualitas & Bergaransi Resmi</title>
+  <meta name="description" content="Showroom jual beli motor bekas bergaransi mesin hingga 6 bulan. 50+ titik inspeksi, surat 100% lengkap dan aman, melayani cash, kredit DP ringan, dan tukar tambah langsung via WhatsApp.">
+  <meta name="keywords" content="jual beli motor bekas, showroom motor second, motor bekas bergaransi, kredit motor bekas, tukar tambah motor, motor seken jakarta">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <div class="container top-bar-content">
+      <div class="top-badge-text">
+        <span class="live-dot"></span>
+        <span class="highlight-pill">PROMO BULAN INI</span>
+        <span>Beli Motor Bergaransi Mesin 6 Bulan + Gratis Servis & Helm Eksklusif!</span>
+      </div>
+      <div class="top-actions">
+        <button id="btnOpenConfig" class="top-config-btn" title="Atur Nomor WhatsApp & Identitas Showroom">
+          <i class="fa-solid fa-sliders"></i> Atur No. WhatsApp Showroom
+        </button>
+        <span class="dealer-phone-display" id="dealerPhoneDisplay">
+          <i class="fa-brands fa-whatsapp"></i> <span id="displayPhoneText">0812-8899-7700</span>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header" id="navbar">
+    <div class="container navbar-container">
+      <a href="#hero" class="brand-logo">
+        <div class="logo-icon-box">
+          <i class="fa-solid fa-motorcycle"></i>
+        </div>
+        <div class="logo-text-group">
+          <span class="brand-name">GARASI MOTOR<span class="text-accent">PRO</span></span>
+          <span class="brand-tagline">Showroom Motor Bekas Bergaransi</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" id="desktopNav">
+        <a href="#katalog" class="nav-link active"><i class="fa-solid fa-layer-group"></i> Katalog Unit</a>
+        <a href="#simulasi-kredit" class="nav-link"><i class="fa-solid fa-calculator"></i> Simulasi Kredit</a>
+        <a href="#tukar-tambah" class="nav-link"><i class="fa-solid fa-handshake"></i> Jual / Tukar Tambah</a>
+        <a href="#keunggulan" class="nav-link"><i class="fa-solid fa-shield-halved"></i> Inspeksi & Garansi</a>
+        <a href="#testimoni" class="nav-link"><i class="fa-solid fa-star"></i> Testimoni</a>
+        <a href="#lokasi" class="nav-link"><i class="fa-solid fa-location-dot"></i> Lokasi</a>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <button class="btn-wa-header" id="btnHeaderWa" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya mau tanya unit motor bekas yang ready stock')">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span>Chat Sales (Fast Respon)</span>
+        </button>
+        <button class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Buka Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <div class="brand-name">GARASI MOTOR<span class="text-accent">PRO</span></div>
+        <button class="close-drawer-btn" id="closeDrawerBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="mobile-drawer-links">
+        <a href="#katalog" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-layer-group"></i> Katalog Motor Ready</a>
+        <a href="#simulasi-kredit" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-calculator"></i> Simulasi Cicilan</a>
+        <a href="#tukar-tambah" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-handshake"></i> Jual / Tukar Tambah Motor</a>
+        <a href="#keunggulan" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-shield-halved"></i> 50+ Titik Inspeksi</a>
+        <a href="#testimoni" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-star"></i> Ulasan Pembeli</a>
+        <a href="#lokasi" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-location-dot"></i> Lokasi & Jam Buka</a>
+      </div>
+      <div class="mobile-drawer-cta">
+        <button class="btn btn-wa-full" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya ingin konsultasi motor bekas yang tersedia')">
+          <i class="fa-brands fa-whatsapp"></i> Chat WhatsApp Sekarang
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-overlay"></div>
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-pill-badge">
+          <i class="fa-solid fa-certificate"></i> Showroom Motor Bekas No. 1 Bergaransi Resmi
+        </div>
+        <h1 class="hero-title">
+          Beli Motor Bekas Berkualitas, <span class="gradient-text">Tanpa Rasa Was-Was!</span>
+        </h1>
+        <p class="hero-subtitle">
+          Pilihan motor second terlengkap, telah lolos <strong>50+ Titik Inspeksi Mesin & Rangka</strong>. 
+          Surat-surat 100% legal dan akur, bergaransi mesin hingga 6 bulan. Bisa <strong>Cash, Kredit DP Murah</strong>, maupun <strong>Tukar Tambah</strong> langsung via WhatsApp.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="#katalog" class="btn btn-primary btn-large">
+            <i class="fa-solid fa-magnifying-glass"></i> Jelajahi Unit Ready (6+ Unit)
+          </a>
+          <a href="#tukar-tambah" class="btn btn-outline btn-large">
+            <i class="fa-solid fa-arrow-right-arrow-left"></i> Mau Jual / Tukar Tambah?
+          </a>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="hero-stats-grid">
+          <div class="stat-card">
+            <div class="stat-num">500+</div>
+            <div class="stat-label">Motor Terjual Puas</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Legalitas Surat Sah</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">6 Bulan</div>
+            <div class="stat-label">Garansi Mesin & CVT</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num">4.9 ★</div>
+            <div class="stat-label">Rating Pelanggan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hero Visual Card -->
+      <div class="hero-visual">
+        <div class="hero-image-wrapper">
+          <img src="assets/images/hero_showroom.jpg" alt="Showroom Garasi Motor Pro" class="hero-main-img">
+          <div class="floating-badge badge-warranty">
+            <div class="badge-icon"><i class="fa-solid fa-shield-check"></i></div>
+            <div class="badge-text">
+              <strong>Garansi Mesin 180 Hari</strong>
+              <span>Kenyamanan Prioritas Kami</span>
+            </div>
+          </div>
+          <div class="floating-badge badge-credit">
+            <div class="badge-icon"><i class="fa-solid fa-bolt"></i></div>
+            <div class="badge-text">
+              <strong>Kredit 1 Hari Approve</strong>
+              <span>DP Ringan Mulai 2 Juta</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Search & Filter Section -->
+  <section class="catalog-section" id="katalog">
+    <div class="container">
+      
+      <!-- Section Header -->
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-motorcycle"></i> BROSUR UNIT TERSEDIA</span>
+        <h2 class="section-title">Katalog Motor Bekas <span class="gradient-text">Ready Stock</span></h2>
+        <p class="section-subtitle">
+          Seluruh unit telah melalui inspeksi menyeluruh, servis tune up, ganti oli baru, dan siap pakai harian maupun touring!
+        </p>
+      </div>
+
+      <!-- Filter Controls Box -->
+      <div class="filter-controls-box">
+        
+        <!-- Search Input -->
+        <div class="search-input-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Cari nama motor (contoh: PCX, Vespa, Ninja, NMAX, Scoopy, ADV)..." autocomplete="off">
+          <button class="clear-search-btn" id="clearSearchBtn" title="Hapus Pencarian"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <!-- Filter Row 1: Brand Pills -->
+        <div class="filter-group">
+          <span class="filter-label"><i class="fa-solid fa-tag"></i> Merek:</span>
+          <div class="filter-pills" id="brandPills">
+            <button class="filter-pill active" data-filter="brand" data-val="all">Semua Merek</button>
+            <button class="filter-pill" data-filter="brand" data-val="Honda">Honda</button>
+            <button class="filter-pill" data-filter="brand" data-val="Yamaha">Yamaha</button>
+            <button class="filter-pill" data-filter="brand" data-val="Kawasaki">Kawasaki</button>
+            <button class="filter-pill" data-filter="brand" data-val="Vespa">Vespa</button>
+          </div>
+        </div>
+
+        <!-- Filter Row 2: Category Pills & Price / Sort Dropdowns -->
+        <div class="filter-secondary-row">
+          <div class="category-pills" id="categoryPills">
+            <button class="filter-pill active" data-filter="category" data-val="all">Semua Tipe</button>
+            <button class="filter-pill" data-filter="category" data-val="Maxi Scooter">Maxi Scooter</button>
+            <button class="filter-pill" data-filter="category" data-val="Sport & Fairing">Sport & Fairing</button>
+            <button class="filter-pill" data-filter="category" data-val="Modern Retro">Modern Retro</button>
+            <button class="filter-pill" data-filter="category" data-val="Adventure">Adventure</button>
+          </div>
+
+          <div class="filter-selects">
+            <!-- Price Range -->
+            <div class="select-wrapper">
+              <label for="priceFilter"><i class="fa-solid fa-money-bill-wave"></i> Rentang Harga:</label>
+              <select id="priceFilter">
+                <option value="all">Semua Harga</option>
+                <option value="under25">Di bawah Rp 25 Juta</option>
+                <option value="25to35">Rp 25 - 35 Juta</option>
+                <option value="35to50">Rp 35 - 50 Juta</option>
+                <option value="above50">Di atas Rp 50 Juta</option>
+              </select>
+            </div>
+
+            <!-- Sort By -->
+            <div class="select-wrapper">
+              <label for="sortBy"><i class="fa-solid fa-arrow-down-wide-short"></i> Urutkan:</label>
+              <select id="sortBy">
+                <option value="recommended">Paling Direkomendasikan</option>
+                <option value="priceLow">Harga: Termurah ke Tertinggi</option>
+                <option value="priceHigh">Harga: Tertinggi ke Termurah</option>
+                <option value="yearNew">Tahun: Terbaru</option>
+                <option value="kmLow">Kilometer: Paling Rendah</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter Summary & Reset -->
+        <div class="filter-status-bar">
+          <div class="results-count" id="resultsCount">
+            Menampilkan <strong>6</strong> unit motor siap bawa pulang
+          </div>
+          <button class="btn-reset-filter" id="btnResetFilter">
+            <i class="fa-solid fa-arrow-rotate-left"></i> Reset Filter
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Motorcycle Grid -->
+      <div class="motorcycle-grid" id="motorGrid">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+
+      <!-- No Results Placeholder -->
+      <div class="no-results-state hidden" id="noResultsState">
+        <i class="fa-solid fa-motorcycle-slash no-results-icon"></i>
+        <h3>Motor yang Anda cari tidak ditemukan</h3>
+        <p>Coba gunakan kata kunci lain atau hubungi sales kami langsung di WhatsApp untuk cek stok yang baru masuk gudang!</p>
+        <button class="btn btn-wa-inline" onclick="openDirectWhatsApp('Halo admin, saya mencari motor yang belum ada di katalog web, apakah ada stok lain?')">
+          <i class="fa-brands fa-whatsapp"></i> Tanya Stok Baru via WhatsApp
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Loan / Credit Calculator Section -->
+  <section class="calculator-section" id="simulasi-kredit">
+    <div class="container">
+      <div class="calculator-card">
+        <div class="calc-header">
+          <div class="calc-icon-box">
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <div>
+            <span class="section-tag">SIMULASI ANGSURAN MUDAH</span>
+            <h2 class="calc-title">Kalkulator Simulasi Kredit Motor</h2>
+            <p class="calc-desc">Hitung estimasi DP dan cicilan bulanan yang pas dengan kantong Anda. Bekerjasama resmi dengan leasing terpercaya: Adira, FIFGROUP, BAF, OTO, & Mandiri Utama Finance.</p>
+          </div>
+        </div>
+
+        <div class="calc-body-grid">
+          <!-- Inputs Column -->
+          <div class="calc-inputs-col">
+            
+            <!-- Motor Selection -->
+            <div class="form-group">
+              <label for="calcMotorSelect" class="form-label">
+                <i class="fa-solid fa-motorcycle"></i> Pilih Unit Motor:
+              </label>
+              <select id="calcMotorSelect" class="form-control">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+
+            <!-- Price Input -->
+            <div class="form-group">
+              <label for="calcPrice" class="form-label">
+                <i class="fa-solid fa-tags"></i> Harga Motor (OTR Cash):
+              </label>
+              <div class="input-prefix-wrapper">
+                <span class="prefix">Rp</span>
+                <input type="number" id="calcPrice" class="form-control with-prefix" value="29800000" step="500000">
+              </div>
+            </div>
+
+            <!-- DP Percentage Slider -->
+            <div class="form-group">
+              <div class="slider-header">
+                <label for="calcDpSlider" class="form-label">
+                  <i class="fa-solid fa-wallet"></i> Uang Muka (DP):
+                </label>
+                <div class="slider-val-badge">
+                  <span id="dpPercentLabel">20%</span> (<span id="dpAmountFormatted">Rp 5.960.000</span>)
+                </div>
+              </div>
+              <input type="range" id="calcDpSlider" min="15" max="70" step="5" value="20" class="custom-range-slider">
+              <div class="slider-ticks">
+                <span>15% (Min)</span>
+                <span>30%</span>
+                <span>50%</span>
+                <span>70% (Max)</span>
+              </div>
+            </div>
+
+            <!-- Tenor Selection -->
+            <div class="form-group">
+              <label class="form-label"><i class="fa-solid fa-calendar-days"></i> Pilihan Tenor Angsuran:</label>
+              <div class="tenor-selector" id="tenorSelector">
+                <button type="button" class="tenor-btn" data-months="11">11 Bulan</button>
+                <button type="button" class="tenor-btn" data-months="17">17 Bulan</button>
+                <button type="button" class="tenor-btn active" data-months="23">23 Bulan</button>
+                <button type="button" class="tenor-btn" data-months="29">29 Bulan</button>
+                <button type="button" class="tenor-btn" data-months="35">35 Bulan</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Result Column -->
+          <div class="calc-results-col">
+            <div class="result-box">
+              <div class="result-header">
+                <span>Estimasi Angsuran / Bulan</span>
+                <span class="badge-approved"><i class="fa-solid fa-circle-check"></i> Syarat Mudah</span>
+              </div>
+              <div class="result-price-large" id="calcMonthlyResult">
+                Rp 1.485.000<span class="per-month">/bulan</span>
+              </div>
+
+              <!-- Breakdown Items -->
+              <div class="result-breakdown">
+                <div class="breakdown-row">
+                  <span>Unit Dipilih</span>
+                  <strong id="calcResultMotorName">Honda PCX 160 ABS 2023</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Total Harga Motor</span>
+                  <strong id="calcResultPrice">Rp 29.800.000</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Uang Muka (DP Disiapkan)</span>
+                  <strong class="text-accent" id="calcResultDp">Rp 5.960.000</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Lama Angsuran (Tenor)</span>
+                  <strong id="calcResultTenor">23 Bulan</strong>
+                </div>
+                <div class="breakdown-row">
+                  <span>Termasuk Asuransi</span>
+                  <span class="text-success"><i class="fa-solid fa-check"></i> TLO (Kehilangan)</span>
+                </div>
+              </div>
+
+              <!-- Send to WhatsApp Button -->
+              <button class="btn btn-wa-full btn-large" id="btnSendCalcWa">
+                <i class="fa-brands fa-whatsapp"></i> Ajukan Kredit via WhatsApp Sales
+              </button>
+              <p class="calc-disclaimer">
+                *Simulasi ini merupakan estimasi angsuran. Nilai pasti dan approval tergantung verifikasi data leasing (KTP, KK, Bukti Penghasilan).
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Sell Your Bike / Trade-In Section (Tukar Tambah ke WhatsApp) -->
+  <section class="tradein-section" id="tukar-tambah">
+    <div class="container">
+      <div class="tradein-wrapper">
+        <div class="tradein-info">
+          <span class="section-tag"><i class="fa-solid fa-handshake"></i> LAYANAN JUAL & TUKAR TAMBAH</span>
+          <h2 class="section-title">Mau Jual atau Tukar Tambah Motor Lama Anda?</h2>
+          <p class="tradein-lead">
+            Dapatkan penawaran harga tertinggi dengan proses transparan, instan, dan uang langsung cair hari ini! 
+            Cukup isi data motor Anda di samping, formulir akan otomatis terformat rapi ke WhatsApp tim penilai kami.
+          </p>
+
+          <div class="tradein-perks">
+            <div class="perk-item">
+              <div class="perk-icon"><i class="fa-solid fa-bolt"></i></div>
+              <div>
+                <h4>Taksiran Harga 10 Menit</h4>
+                <p>Kirim foto dan data, appraisal kami langsung memberikan estimasi harga pasar tertinggi.</p>
+              </div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-icon"><i class="fa-solid fa-money-bill-transfer"></i></div>
+              <div>
+                <h4>Bisa Tukar Tambah ke Unit Kami</h4>
+                <p>Motor lama Anda bisa langsung dipotongkan untuk DP atau pelunasan unit motor yang Anda incar.</p>
+              </div>
+            </div>
+            <div class="perk-item">
+              <div class="perk-icon"><i class="fa-solid fa-house-chimney"></i></div>
+              <div>
+                <h4>Bisa Dijemput ke Rumah</h4>
+                <p>Tim kami siap datang ke rumah Anda untuk cek fisik dan serah terima dana tanpa repot.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Box -->
+        <div class="tradein-form-card">
+          <div class="form-card-header">
+            <h3><i class="fa-brands fa-whatsapp text-success"></i> Formulir Penilaian Motor</h3>
+            <p>Data langsung diteruskan ke WhatsApp Admin Penilai</p>
+          </div>
+          <form id="tradeInForm" class="tradein-form">
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="ownerName" class="form-label">Nama Anda *</label>
+                <input type="text" id="ownerName" class="form-control" placeholder="Contoh: Hendra Wijaya" required>
+              </div>
+              <div class="form-group col-6">
+                <label for="ownerCity" class="form-label">Kota / Lokasi Motor *</label>
+                <input type="text" id="ownerCity" class="form-control" placeholder="Contoh: Jakarta Barat" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="motorBrand" class="form-label">Merek Motor *</label>
+                <select id="motorBrand" class="form-control" required>
+                  <option value="">-- Pilih Merek --</option>
+                  <option value="Honda">Honda</option>
+                  <option value="Yamaha">Yamaha</option>
+                  <option value="Kawasaki">Kawasaki</option>
+                  <option value="Vespa / Piaggio">Vespa / Piaggio</option>
+                  <option value="Suzuki">Suzuki</option>
+                  <option value="Lainnya">Lainnya</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="motorModel" class="form-label">Tipe & Seri Motor *</label>
+                <input type="text" id="motorModel" class="form-control" placeholder="Contoh: Vario 125 CBS ISS" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="motorYear" class="form-label">Tahun Pembuatan *</label>
+                <input type="number" id="motorYear" class="form-control" placeholder="Contoh: 2021" min="2010" max="2026" required>
+              </div>
+              <div class="form-group col-6">
+                <label for="motorKm" class="form-label">Kilometer (Odo) Sekitar</label>
+                <input type="text" id="motorKm" class="form-control" placeholder="Contoh: 18.000 KM">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="motorDocStatus" class="form-label">Kelengkapan Surat-Surat *</label>
+              <select id="motorDocStatus" class="form-control" required>
+                <option value="Lengkap (STNK + BPKB + Faktur) Pajak Hidup">Lengkap (STNK + BPKB + Faktur) Pajak Hidup</option>
+                <option value="Lengkap (STNK + BPKB) Pajak Telat / Mati">Lengkap (STNK + BPKB) Pajak Telat / Mati</option>
+                <option value="Masih Nyicil di Leasing / Perlu Pelunasan">Masih Nyicil di Leasing (Perlu Dibantu Lunasi)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="tradeType" class="form-label">Jenis Keperluan *</label>
+                <select id="tradeType" class="form-control">
+                  <option value="Jual Lepas (Mau Terima Uang Tunai)">Jual Lepas (Terima Tunai Langsung)</option>
+                  <option value="Tukar Tambah dengan Unit Showroom">Tukar Tambah dengan Unit Showroom</option>
+                </select>
+              </div>
+              <div class="form-group col-6">
+                <label for="expectedPrice" class="form-label">Harga yang Diharapkan (Rp)</label>
+                <input type="text" id="expectedPrice" class="form-control" placeholder="Contoh: Rp 16.500.000">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="motorConditionNotes" class="form-label">Catatan Kondisi Motor (Fisik, Mesin, Modifikasi)</label>
+              <textarea id="motorConditionNotes" class="form-control" rows="2" placeholder="Contoh: Body mulus 90%, mesin halus orisinil, ban baru diganti 2 bulan lalu..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-wa-full btn-large">
+              <i class="fa-brands fa-whatsapp"></i> Kirim Data & Dapatkan Taksiran Harga via WA
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 50+ Inspection & Guarantee Features Section -->
+  <section class="features-section" id="keunggulan">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-shield-halved"></i> STANDAR KUALITAS GARASI MOTOR PRO</span>
+        <h2 class="section-title">Kenapa Harus Beli Motor di <span class="gradient-text">Showroom Kami?</span></h2>
+        <p class="section-subtitle">
+          Kami tidak menjual motor asal-asalan. Setiap unit yang dipajang adalah motor pilihan yang siap dipakai tanpa rasa was-was.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+          </div>
+          <h3 class="feature-title">50+ Titik Cek Inspeksi</h3>
+          <p class="feature-text">Mulai dari kelurusan rangka sasis, kompresi mesin, kelistrikan ECU, CVT/girbox, hingga pengereman dicek detail oleh mekanik bersertifikat.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-shield-virus"></i>
+          </div>
+          <h3 class="feature-title">Bebas Tabrak & Bebas Banjir</h3>
+          <p class="feature-text">Jaminan 100% uang kembali jika unit terbukti bekas tabrakan berat yang merusak rangka utama atau pernah terendam banjir bandang.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-file-shield"></i>
+          </div>
+          <h3 class="feature-title">Legalitas Dokumen Terjamin</h3>
+          <p class="feature-text">BPKB, STNK, dan Faktur asli telah dicek langsung ke database Samsat. Nomor rangka dan nomor mesin dijamin akur 100% tanpa manipulasi.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+          </div>
+          <h3 class="feature-title">Garansi Mesin s/d 6 Bulan</h3>
+          <p class="feature-text">Kami memberikan garansi tertulis untuk komponen mesin dan transmisi. Anda mendapatkan rasa aman seperti membeli motor baru.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-truck-ramp-box"></i>
+          </div>
+          <h3 class="feature-title">Pengantaran Unit ke Rumah</h3>
+          <p class="feature-text">Tidak sempat ke showroom? Kami bisa kirim foto & video detail 360°, lalu unit kami antar langsung ke depan pintu rumah Anda.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon-wrapper">
+            <i class="fa-solid fa-id-card"></i>
+          </div>
+          <h3 class="feature-title">Bantu Balik Nama & Pajak</h3>
+          <p class="feature-text">Layanan after-sales siap membantu Anda dalam pengurusan mutasi keluar, balik nama STNK/BPKB, maupun perpanjang pajak tahunan.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials & Handover Photo Gallery -->
+  <section class="testimonials-section" id="testimoni">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-comments"></i> BUKTI KEPUASAN KONSUMEN</span>
+        <h2 class="section-title">Cerita Mereka yang Sudah <span class="gradient-text">Bawa Pulang Motor</span></h2>
+        <p class="section-subtitle">
+          Lebih dari 500+ pelanggan telah mempercayakan motor impian mereka kepada Garasi Motor Pro.
+        </p>
+      </div>
+
+      <div class="testi-showcase-grid">
+        
+        <!-- Featured Handover Photo Card -->
+        <div class="handover-photo-card">
+          <div class="handover-img-box">
+            <img src="assets/images/customer_handover.jpg" alt="Dokumentasi Serah Terima Motor Garasi Motor Pro">
+            <div class="handover-badge">
+              <i class="fa-solid fa-camera"></i> Dokumentasi Serah Terima Honda ADV 160
+            </div>
+          </div>
+          <div class="handover-info">
+            <div class="stars">
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <p class="handover-quote">
+              "Awalnya ragu beli motor bekas online, tapi pas chat via WA respon salesnya ramah banget. Dikirim video mesin dinyalain, surat-surat diperiksa di depan mata, bahkan pas diantar ke rumah kondisi motor persis seperti baru! Mantap Garasi Motor Pro!"
+            </p>
+            <div class="buyer-profile">
+              <strong>Bpk. Dimas Pratama (Jakarta Selatan)</strong>
+              <span>Pembeli Honda ADV 160 ABS 2023 - Cash Keras</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Testimonials Grid -->
+        <div class="reviews-sub-grid">
+          <div class="review-box">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "Kredit NMAX lewat leasing dibantu sampai gol cuma 1 hari kerja. DP-nya beneran sesuai simulasi di web, gak ada biaya siluman. Recommended showroom!"
+            </p>
+            <div class="review-author">
+              <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <strong>Reza Maulana</strong>
+                <span>Yamaha NMAX 155 (Via Leasing Adira)</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-box">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "Vespa Sprint kuningnya kinclong banget! Cat orisinil, CVT halus gak gredek sama sekali. Kunci coklat master masih ada utuh. Pelayanannya bintang 5."
+            </p>
+            <div class="review-author">
+              <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <strong>Anissa Rahmawati</strong>
+                <span>Vespa Sprint 150 i-get</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-box">
+            <div class="review-stars">
+              <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+            </div>
+            <p class="review-text">
+              "Tukar tambah Beat 2018 saya ke PCX 160 baru. Dihargai fair di atas tawaran showroom lain. Transaksi 2 jam langsung beres motor langsung jalan!"
+            </p>
+            <div class="review-author">
+              <div class="author-avatar"><i class="fa-solid fa-user"></i></div>
+              <div>
+                <strong>Fajar Nugroho</strong>
+                <span>Tukar Tambah Unit PCX 160</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tag"><i class="fa-solid fa-circle-question"></i> PERTANYAAN UMUM</span>
+        <h2 class="section-title">Hal yang Sering <span class="gradient-text">Ditanyakan (FAQ)</span></h2>
+      </div>
+
+      <div class="faq-accordion-wrapper">
+        <div class="faq-item active">
+          <button class="faq-question">
+            <span>Bagaimana cara memesan atau menanyakan motor yang saya minati?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Sangat mudah! Anda cukup klik tombol <strong>"Tanya via WhatsApp"</strong> pada motor yang Anda inginkan. Pesan otomatis berisi tipe motor, tahun, dan kode unit akan langsung terisi. Sales kami akan langsung membalas ketersediaan unit dan foto/video terkini.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah surat-surat motor dijamin asli dan legal?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Ya, 100% dijamin resmi. Setiap motor yang masuk showroom kami melalui verifikasi dokumen di Samsat untuk memastikan STNK, BPKB, dan Faktur bukan duplikat palsu, serta nomor rangka dan nomor mesin akur sempurna.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Bagaimana syarat pengajuan kredit motor bekas?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Syarat pengajuan kredit sangat simpel: Foto KTP Suami/Istri (jika menikah) atau KTP Pemohon + Penjamin (jika lajang), Kartu Keluarga (KK), dan bukti slip gaji / mutasi rekening 3 bulan terakhir. Tim kami siap membantu proses survei dan approval.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apakah melayani pengiriman ke luar kota / luar pulau?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Tentu saja. Untuk area Jabodetabek kami antar langsung menggunakan armada towing showroom. Untuk pengiriman ke seluruh Pulau Jawa, Bali, dan Sumatera kami bekerja sama dengan ekspedisi kargo motor terpercaya dengan asuransi pengiriman penuh.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>Apa saja yang di-cover oleh garansi mesin?</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>Garansi mencakup komponen blok silinder, piston, transmisi gigi/CVT, serta kelistrikan sistem injeksi ECU yang bukan diakibatkan oleh kelalaian pemakaian (seperti jatuh, telat ganti oli setelah serah terima, atau modifikasi ekstrim).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location & Showroom Visit Section -->
+  <section class="location-section" id="lokasi">
+    <div class="container">
+      <div class="location-card">
+        <div class="location-info">
+          <span class="section-tag"><i class="fa-solid fa-map-pin"></i> KUNJUNGI SHOWROOM KAMI</span>
+          <h2 class="location-title">Silakan Datang Langsung & <span class="gradient-text">Test Ride Gratis!</span></h2>
+          <p class="location-desc">
+            Mau cek unit secara langsung, dengar suara mesin, atau tes tarikan motor? Kunjungi showroom kami dengan fasilitas lengkap, ruang tunggu ber-AC, dan area tes motor yang aman.
+          </p>
+
+          <div class="location-details">
+            <div class="detail-row">
+              <div class="detail-icon"><i class="fa-solid fa-location-dot"></i></div>
+              <div>
+                <strong>Alamat Showroom:</strong>
+                <p id="displayAddress">Jl. Raya Otista No. 188, Jatinegara, Jakarta Timur, DKI Jakarta 13330</p>
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <div class="detail-icon"><i class="fa-solid fa-clock"></i></div>
+              <div>
+                <strong>Jam Operasional:</strong>
+                <p>Senin – Minggu: 08.30 – 20.00 WIB (Buka Setiap Hari)</p>
+              </div>
+            </div>
+
+            <div class="detail-row">
+              <div class="detail-icon"><i class="fa-brands fa-whatsapp"></i></div>
+              <div>
+                <strong>Layanan Pelanggan WhatsApp:</strong>
+                <p><span id="displayPhoneSecondary">0812-8899-7700</span> (Fast Response 24 Jam)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="location-buttons">
+            <button class="btn btn-wa-full" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya mau janjian datang ke showroom hari ini untuk melihat unit motor')">
+              <i class="fa-brands fa-whatsapp"></i> Jadwalkan Kunjungan / Test Ride
+            </button>
+            <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
+              <i class="fa-solid fa-diamond-turn-right"></i> Petunjuk Arah Google Maps
+            </a>
+          </div>
+        </div>
+
+        <div class="location-map-box">
+          <div class="map-placeholder-card">
+            <div class="map-art">
+              <i class="fa-solid fa-location-crosshairs map-art-icon"></i>
+              <div class="pulse-ring"></div>
+            </div>
+            <div class="map-card-content">
+              <h4>GARASI MOTOR PRO SHOWROOM</h4>
+              <p>Area strategis, parkir luas untuk mobil & motor, bebas ganjil genap.</p>
+              <div class="showroom-chips">
+                <span><i class="fa-solid fa-wifi"></i> Free Wi-Fi</span>
+                <span><i class="fa-solid fa-snowflake"></i> AC Lounge</span>
+                <span><i class="fa-solid fa-mug-hot"></i> Kopi Gratis</span>
+                <span><i class="fa-solid fa-gas-pump"></i> BBM Penuh</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-content-grid">
+      <div class="footer-brand-col">
+        <a href="#hero" class="brand-logo footer-logo">
+          <div class="logo-icon-box">
+            <i class="fa-solid fa-motorcycle"></i>
+          </div>
+          <div class="logo-text-group">
+            <span class="brand-name">GARASI MOTOR<span class="text-accent">PRO</span></span>
+            <span class="brand-tagline">Showroom Motor Bekas Bergaransi</span>
+          </div>
+        </a>
+        <p class="footer-about">
+          Pusat jual beli motor second berkualitas tinggi. Melayani pembelian tunai, kredit leasing resmi dengan bunga kompetitif, dan tukar tambah motor segala merek.
+        </p>
+        <div class="footer-socials">
+          <a href="#" class="social-icon" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#" class="social-icon" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" class="social-icon" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+          <a href="#" class="social-icon" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Navigasi Cepat</h4>
+        <ul>
+          <li><a href="#katalog"><i class="fa-solid fa-chevron-right"></i> Katalog Motor Ready</a></li>
+          <li><a href="#simulasi-kredit"><i class="fa-solid fa-chevron-right"></i> Kalkulator Kredit</a></li>
+          <li><a href="#tukar-tambah"><i class="fa-solid fa-chevron-right"></i> Jual / Tukar Tambah</a></li>
+          <li><a href="#keunggulan"><i class="fa-solid fa-chevron-right"></i> Standar Inspeksi 50 Titik</a></li>
+          <li><a href="#testimoni"><i class="fa-solid fa-chevron-right"></i> Testimoni Pembeli</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-col">
+        <h4>Tipe Motor Populer</h4>
+        <ul>
+          <li><a href="#katalog" onclick="filterByQuick('Honda', 'all')"><i class="fa-solid fa-chevron-right"></i> Honda PCX & ADV 160</a></li>
+          <li><a href="#katalog" onclick="filterByQuick('Yamaha', 'all')"><i class="fa-solid fa-chevron-right"></i> Yamaha NMAX & Aerox</a></li>
+          <li><a href="#katalog" onclick="filterByQuick('Vespa', 'all')"><i class="fa-solid fa-chevron-right"></i> Vespa Sprint & Primavera</a></li>
+          <li><a href="#katalog" onclick="filterByQuick('Kawasaki', 'all')"><i class="fa-solid fa-chevron-right"></i> Kawasaki Ninja Series</a></li>
+          <li><a href="#katalog" onclick="filterByQuick('Honda', 'Modern Retro')"><i class="fa-solid fa-chevron-right"></i> Honda Scoopy & Beat</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact-col">
+        <h4>Kontak Showroom</h4>
+        <div class="footer-contact-item">
+          <i class="fa-brands fa-whatsapp text-success"></i>
+          <div>
+            <strong>WhatsApp Sales:</strong>
+            <p id="footerPhoneText">0812-8899-7700</p>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-envelope text-accent"></i>
+          <div>
+            <strong>Email Layanan:</strong>
+            <p>halo@garasimotorpro.com</p>
+          </div>
+        </div>
+        <div class="footer-contact-item">
+          <i class="fa-solid fa-clock text-accent"></i>
+          <div>
+            <strong>Jam Buka:</strong>
+            <p>08.30 - 20.00 WIB (Setiap Hari)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-content">
+        <p>&copy; 2026 <strong>GARASI MOTOR PRO</strong>. Seluruh Hak Cipta Dilindungi Undang-Undang.</p>
+        <p class="footer-legal">Legalitas Terdaftar | Bekerjasama dengan Leasing Resmi OJK</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Widget -->
+  <div class="floating-wa-wrapper" id="floatingWaWrapper">
+    <div class="wa-chat-popup hidden" id="waChatPopup">
+      <div class="wa-popup-header">
+        <div class="wa-header-avatar">
+          <i class="fa-solid fa-motorcycle"></i>
+          <span class="online-indicator"></span>
+        </div>
+        <div class="wa-header-info">
+          <h4>Customer Care Garasi Motor Pro</h4>
+          <span class="status-text">Online • Respon Cepat & Ramah</span>
+        </div>
+        <button class="wa-popup-close" id="waPopupClose"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="wa-popup-body">
+        <div class="wa-chat-bubble dealer-bubble">
+          <p>Halo! Selamat datang di Garasi Motor Pro 🏍️</p>
+          <p>Ada yang bisa kami bantu? Anda bisa langsung memilih konsultan sales kami di bawah:</p>
+        </div>
+
+        <div class="sales-agent-cards">
+          <!-- Sales 1 -->
+          <div class="agent-card" onclick="chatWithAgent('Mas Rizky (Spesialis Matic & Bebek)', 'Halo Mas Rizky, saya mau konsultasi motor matic bekas ready stock')">
+            <div class="agent-avatar"><i class="fa-solid fa-user-tie"></i></div>
+            <div class="agent-details">
+              <strong>Mas Rizky</strong>
+              <span>Spesialis Matic, Maxi & Bebek</span>
+            </div>
+            <i class="fa-brands fa-whatsapp agent-wa-icon"></i>
+          </div>
+
+          <!-- Sales 2 -->
+          <div class="agent-card" onclick="chatWithAgent('Mbak Cindy (Spesialis Sport & Kredit)', 'Halo Mbak Cindy, saya mau konsultasi simulasi kredit dan unit sport')">
+            <div class="agent-avatar"><i class="fa-solid fa-user-astronaut"></i></div>
+            <div class="agent-details">
+              <strong>Mbak Cindy</strong>
+              <span>Spesialis Sport, Vespa & Kredit</span>
+            </div>
+            <i class="fa-brands fa-whatsapp agent-wa-icon"></i>
+          </div>
+        </div>
+
+        <div class="quick-inquiry-chips">
+          <button class="quick-chip" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya mau tanya pilihan motor budget di bawah 25 juta')">
+            💰 Cari motor budget < 25jt
+          </button>
+          <button class="quick-chip" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, bagaimana syarat kredit DP minim?')">
+            📑 Syarat Kredit & DP Minim
+          </button>
+          <button class="quick-chip" onclick="openDirectWhatsApp('Halo admin, saya mau jual motor lama saya, bagaimana prosesnya?')">
+            🔄 Mau Jual Motor Lama
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- The Floating WA Pill Button -->
+    <button class="floating-wa-btn" id="floatingWaBtn" aria-label="Buka Chat WhatsApp">
+      <div class="wa-btn-badge-notif">1</div>
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="floating-wa-label">Tanya Sales WA</span>
+    </button>
+  </div>
+
+  <!-- Mobile Sticky Bottom Action Bar -->
+  <div class="mobile-sticky-bar">
+    <a href="#katalog" class="bottom-action-item">
+      <i class="fa-solid fa-motorcycle"></i>
+      <span>Katalog</span>
+    </a>
+    <a href="#simulasi-kredit" class="bottom-action-item">
+      <i class="fa-solid fa-calculator"></i>
+      <span>Cicilan</span>
+    </a>
+    <a href="#tukar-tambah" class="bottom-action-item">
+      <i class="fa-solid fa-handshake"></i>
+      <span>Jual Motor</span>
+    </a>
+    <button class="bottom-action-item wa-highlight" onclick="openDirectWhatsApp('Halo Garasi Motor Pro, saya mau konsultasi pembelian motor bekas')">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span>Chat WA</span>
+    </button>
+  </div>
+
+  <!-- Motorcycle Unit Detail Modal (Inspection & Full Specs) -->
+  <div class="modal-overlay hidden" id="unitModalOverlay">
+    <div class="modal-card unit-modal-card">
+      <button class="modal-close-btn" id="unitModalClose"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-body-scrollable" id="unitModalBody">
+        <!-- Rendered dynamically by app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Dealer WhatsApp Number & Info Config Modal -->
+  <div class="modal-overlay hidden" id="configModalOverlay">
+    <div class="modal-card config-modal-card">
+      <button class="modal-close-btn" id="configModalClose"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="config-modal-header">
+        <div class="config-icon"><i class="fa-solid fa-sliders"></i></div>
+        <div>
+          <h3>Pengaturan Showroom & No. WhatsApp</h3>
+          <p>Ubah nomor WhatsApp tujuan dan nama showroom sesuai bisnis Anda.</p>
+        </div>
+      </div>
+
+      <form id="configForm" class="config-form">
+        <div class="form-group">
+          <label for="cfgShowroomName" class="form-label">Nama Showroom</label>
+          <input type="text" id="cfgShowroomName" class="form-control" value="GARASI MOTOR PRO" required>
+        </div>
+
+        <div class="form-group">
+          <label for="cfgPhone" class="form-label">Nomor WhatsApp Admin (Gunakan format 62...)</label>
+          <input type="text" id="cfgPhone" class="form-control" placeholder="Contoh: 6281288997700" value="6281288997700" required>
+          <small class="form-hint">Nomor ini akan menjadi tujuan seluruh tombol chat, booking, dan simulasi kredit.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="cfgAddress" class="form-label">Alamat Showroom</label>
+          <textarea id="cfgAddress" class="form-control" rows="2">Jl. Raya Otista No. 188, Jatinegara, Jakarta Timur, DKI Jakarta 13330</textarea>
+        </div>
+
+        <div class="config-actions">
+          <button type="button" class="btn btn-outline" id="btnResetConfig">Kembalikan Default</button>
+          <button type="submit" class="btn btn-primary"><i class="fa-solid fa-floppy-disk"></i> Simpan Pengaturan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Custom Script -->
+  <script src="app.js"></script>
+</body>
+</html>

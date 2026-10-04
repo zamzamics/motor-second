@@ -7,11 +7,11 @@ Web brosur digital modern, elegan, dan profesional untuk showroom jual beli moto
 ## 🌟 Fitur Utama
 
 ### 1. 🏍️ Katalog Interaktif & Filter Real-Time
-- **Filter Cepat Merek**: Honda, Yamaha, Kawasaki, Vespa.
-- **Filter Tipe / Kategori**: Maxi Scooter, Sport & Fairing, Modern Retro, Adventure.
-- **Filter Rentang Harga**: < 25 Juta, 25-35 Juta, 35-50 Juta, > 50 Juta.
+- **Filter Cepat Merek**: Honda, Yamaha, Kawasaki, Vespa, Uwinfly, Gesits.
+- **Filter Tipe / Kategori**: Sepeda Listrik & EV, Maxi Scooter, Sport & Fairing, Modern Retro, Adventure.
+- **Filter Rentang Harga**: < 10 Juta (Sepeda Listrik), < 25 Juta, 25-35 Juta, 35-50 Juta, > 50 Juta.
 - **Pengurutan (Sorting)**: Harga Termurah/Tertinggi, Tahun Terbaru, Kilometer Terendah.
-- **Pencarian Langsung (Live Search)**: Pencarian cepat berdasarkan model/nama motor.
+- **Pencarian Langsung (Live Search)**: Pencarian cepat berdasarkan model/nama motor & sepeda listrik.
 
 ### 2. 📱 Integrasi WhatsApp Komprehensif (Otomatis & Terstruktur)
 Semua aksi di website terhubung langsung dengan pesan WhatsApp yang rapi dan terformat otomatis:

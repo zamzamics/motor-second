@@ -284,6 +284,76 @@ const MOTORCYCLES = [
       'Faktur pembelian dan STNK/BPKB asli verified'
     ],
     description: 'Skutik petualang dengan desain garang dan macho. Tangguh di segala medan jalan berlubang. Siap untuk komuter harian maupun perjalanan touring jarak jauh.'
+  },
+  {
+    id: 7,
+    name: 'Uwinfly DF7 Smart Sepeda Listrik',
+    code: 'GMP-EBIKE07',
+    brand: 'Uwinfly',
+    category: 'Sepeda Listrik',
+    year: 2024,
+    price: 3850000,
+    dpMin: 500000,
+    monthlyEst: 185000,
+    km: '1.200 KM',
+    plate: 'Non-Plat (Sepeda Listrik Resmi)',
+    tax: 'Bebas Pajak & Bebas Bensin',
+    color: 'Tosca Turquoise & Matte Black',
+    image: 'assets/images/bike_ebike_uwinfly.jpg',
+    badgeType: 'electric',
+    badgeLabel: '⚡ SEPEDA LISTRIK',
+    warrantyTag: 'Garansi Baterai',
+    specs: {
+      engine: 'BLDC Motor 500W High Torque Eco-friendly',
+      power: 'Kecepatan Max: 40 km/jam | Jarak Tempuh: 45 km',
+      transmission: 'Otomatis Throttle Gas + Pedal Assist Manual',
+      brakes: 'Front & Rear Drum Brake with Auto Power Cut-off',
+      tires: 'Ban Tubeless 14 x 2.50 Tebal 95%',
+      keys: 'Remote Keyless Alarm Anti-Maling + Smart NFC Card'
+    },
+    inspection: [
+      'Kondisi kesehatan baterai aki kering (SOH) 96% sangat prima',
+      'Charger original bawaan pabrik normal, pengisian cepat 4-6 jam',
+      'Display speedometer digital LED, indikator baterai, lampu LED terang',
+      'Rem otomatis memutus arus listrik seketika saat ditarik',
+      'Sasis kokoh bebas karat, keranjang depan & sandaran jok belakang lengkap'
+    ],
+    description: 'Sepeda listrik ramah lingkungan sangat hemat untuk mobilitas komplek, antar anak sekolah, atau belanja pasar. Bebas isi bensin, bebas pajak tahunan, tinggal colok listrik rumah langsung jalan!'
+  },
+  {
+    id: 8,
+    name: 'Gesits G1 Smart Electric Scooter',
+    code: 'GMP-GES08',
+    brand: 'Gesits',
+    category: 'Sepeda Listrik',
+    year: 2023,
+    price: 18500000,
+    dpMin: 2000000,
+    monthlyEst: 690000,
+    km: '4.800 KM',
+    plate: 'Plat B (Jakarta Pusat) Plat Listrik Biru',
+    tax: 'Pajak Aktif (Bebas PKB 0%)',
+    color: 'Sporty Glossy Red & Carbon',
+    image: 'assets/images/bike_ebike_gesits.jpg',
+    badgeType: 'electric',
+    badgeLabel: '⚡ MOTOR LISTRIK',
+    warrantyTag: 'Baterai Sehat 95%',
+    specs: {
+      engine: 'Permanent Magnet Synchronous Motor 5 kW Peak Power',
+      power: 'Tenaga 6.7 HP @ 3.600 rpm | Top Speed: 70 km/jam',
+      transmission: 'Direct Drive Pulley Belt Super Halus',
+      brakes: 'Double Disc Brake Depan & Belakang',
+      tires: 'Velg 14 Inch Tubeless FDR 90%',
+      keys: '2 Kunci Remote Immobilizer + Smart Riding Modes (Eco/Urban/Sport)'
+    },
+    inspection: [
+      'Baterai Lithium-ion 72V 20Ah original Gesits lulus tes beban',
+      'Belt transmisi orisinil lentur tanpa retak getas',
+      'Surat lengkap: BPKB, STNK plat biru resmi Samsat legal di jalan raya',
+      'Sistem regeneratif braking berfungsi optimal mengisi daya saat deselerasi',
+      'Dashboard digital terhubung lancar, lampu projector LED jernih'
+    ],
+    description: 'Motor listrik karya anak bangsa dengan akselerasi responsif dan desain sporty. Dilengkapi STNK & BPKB resmi berpelat biru, bebas aturan ganjil-genap dan biaya operasional super murah!'
   }
 ];
 
@@ -355,6 +425,7 @@ function renderMotorGrid() {
       }
     }
     // Price range
+    if (currentFilters.priceRange === 'under10' && item.price >= 10000000) return false;
     if (currentFilters.priceRange === 'under25' && item.price >= 25000000) return false;
     if (currentFilters.priceRange === '25to35' && (item.price < 25000000 || item.price > 35000000)) return false;
     if (currentFilters.priceRange === '35to50' && (item.price < 35000000 || item.price > 50000000)) return false;

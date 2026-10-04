@@ -124,7 +124,7 @@
         <!-- CTA Buttons -->
         <div class="hero-cta-group">
           <a href="#katalog" class="btn btn-primary btn-large">
-            <i class="fa-solid fa-magnifying-glass"></i> Jelajahi Unit Ready (6+ Unit)
+            <i class="fa-solid fa-magnifying-glass"></i> Jelajahi Unit Ready (8+ Unit Termasuk E-Bike)
           </a>
           <a href="#tukar-tambah" class="btn btn-outline btn-large">
             <i class="fa-solid fa-arrow-right-arrow-left"></i> Mau Jual / Tukar Tambah?
@@ -194,7 +194,7 @@
         <!-- Search Input -->
         <div class="search-input-wrapper">
           <i class="fa-solid fa-magnifying-glass search-icon"></i>
-          <input type="text" id="searchInput" placeholder="Cari nama motor (contoh: PCX, Vespa, Ninja, NMAX, Scoopy, ADV)..." autocomplete="off">
+          <input type="text" id="searchInput" placeholder="Cari unit (contoh: Sepeda Listrik, Uwinfly, Gesits, PCX, Vespa, NMAX)..." autocomplete="off">
           <button class="clear-search-btn" id="clearSearchBtn" title="Hapus Pencarian"><i class="fa-solid fa-xmark"></i></button>
         </div>
 
@@ -207,6 +207,8 @@
             <button class="filter-pill" data-filter="brand" data-val="Yamaha">Yamaha</button>
             <button class="filter-pill" data-filter="brand" data-val="Kawasaki">Kawasaki</button>
             <button class="filter-pill" data-filter="brand" data-val="Vespa">Vespa</button>
+            <button class="filter-pill" data-filter="brand" data-val="Uwinfly">⚡ Uwinfly</button>
+            <button class="filter-pill" data-filter="brand" data-val="Gesits">⚡ Gesits</button>
           </div>
         </div>
 
@@ -214,6 +216,7 @@
         <div class="filter-secondary-row">
           <div class="category-pills" id="categoryPills">
             <button class="filter-pill active" data-filter="category" data-val="all">Semua Tipe</button>
+            <button class="filter-pill" data-filter="category" data-val="Sepeda Listrik">⚡ Sepeda Listrik & EV</button>
             <button class="filter-pill" data-filter="category" data-val="Maxi Scooter">Maxi Scooter</button>
             <button class="filter-pill" data-filter="category" data-val="Sport & Fairing">Sport & Fairing</button>
             <button class="filter-pill" data-filter="category" data-val="Modern Retro">Modern Retro</button>
@@ -226,6 +229,7 @@
               <label for="priceFilter"><i class="fa-solid fa-money-bill-wave"></i> Rentang Harga:</label>
               <select id="priceFilter">
                 <option value="all">Semua Harga</option>
+                <option value="under10">Di bawah Rp 10 Juta (E-Bike)</option>
                 <option value="under25">Di bawah Rp 25 Juta</option>
                 <option value="25to35">Rp 25 - 35 Juta</option>
                 <option value="35to50">Rp 35 - 50 Juta</option>
@@ -457,13 +461,17 @@
 
             <div class="form-row">
               <div class="form-group col-6">
-                <label for="motorBrand" class="form-label">Merek Motor *</label>
+                <label for="motorBrand" class="form-label">Merek Motor / Sepeda Listrik *</label>
                 <select id="motorBrand" class="form-control" required>
                   <option value="">-- Pilih Merek --</option>
                   <option value="Honda">Honda</option>
                   <option value="Yamaha">Yamaha</option>
                   <option value="Kawasaki">Kawasaki</option>
                   <option value="Vespa / Piaggio">Vespa / Piaggio</option>
+                  <option value="Uwinfly">Uwinfly (Sepeda Listrik)</option>
+                  <option value="Gesits">Gesits (Motor Listrik)</option>
+                  <option value="Exotic / Pacific">Exotic / Pacific (E-Bike)</option>
+                  <option value="Selis / Polytron">Selis / Polytron</option>
                   <option value="Suzuki">Suzuki</option>
                   <option value="Lainnya">Lainnya</option>
                 </select>

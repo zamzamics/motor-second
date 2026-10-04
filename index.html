@@ -74,17 +74,17 @@
           <i class="fa-brands fa-whatsapp"></i>
           <span>Chat Sales (Fast Respon)</span>
         </button>
-        <button class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Buka Menu">
+        <button class="mobile-toggle-btn" id="mobileMenuToggle" aria-label="Buka Menu" aria-controls="mobileDrawer" aria-expanded="false">
           <i class="fa-solid fa-bars"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Drawer Navigation -->
-    <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
       <div class="mobile-drawer-header">
         <div class="brand-name">GARASI MOTOR<span class="text-accent">PRO</span></div>
-        <button class="close-drawer-btn" id="closeDrawerBtn"><i class="fa-solid fa-xmark"></i></button>
+        <button class="close-drawer-btn" id="closeDrawerBtn" aria-label="Tutup menu"><i class="fa-solid fa-xmark"></i></button>
       </div>
       <div class="mobile-drawer-links">
         <a href="#katalog" class="mobile-nav-link" onclick="closeDrawer()"><i class="fa-solid fa-layer-group"></i> Katalog Motor Ready</a>

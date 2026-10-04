@@ -938,8 +938,11 @@ function setupMobileDrawer() {
   if (toggleBtn && drawer) {
     toggleBtn.addEventListener('click', () => {
       drawer.classList.add('open');
+      drawer.setAttribute('aria-hidden', 'false');
+      toggleBtn.setAttribute('aria-expanded', 'true');
       if (backdrop) backdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
+      closeBtn?.focus();
     });
   }
 
@@ -950,11 +953,28 @@ function setupMobileDrawer() {
   if (backdrop) {
     backdrop.addEventListener('click', closeDrawer);
   }
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && drawer?.classList.contains('open')) {
+      closeDrawer();
+      toggleBtn?.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 992 && drawer?.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
 }
 
 function closeDrawer() {
   const drawer = document.getElementById('mobileDrawer');
-  if (drawer) drawer.classList.remove('open');
+  if (drawer) {
+    drawer.classList.remove('open');
+    drawer.setAttribute('aria-hidden', 'true');
+  }
+  document.getElementById('mobileMenuToggle')?.setAttribute('aria-expanded', 'false');
   const backdrop = document.getElementById('mobileDrawerBackdrop');
   if (backdrop) backdrop.classList.remove('open');
   document.body.style.overflow = '';

@@ -402,8 +402,8 @@ button {
   top: 0;
   right: 0;
   width: min(84vw, 320px);
-  height: 100dvh;
   height: 100vh;
+  height: 100dvh;
   background: var(--bg-secondary);
   border-left: 1px solid var(--border-color);
   padding: calc(1.25rem + var(--safe-top)) 1.25rem calc(1.25rem + var(--safe-bottom));
@@ -3101,35 +3101,30 @@ button {
     padding-bottom: 0.85rem;
   }
 
-  /* Native horizontal swipe chips for Android */
+  /* Keep every filter chip inside the card on Android. */
   .filter-pills, .category-pills {
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scroll-snap-type: x proximity;
+    flex-wrap: wrap;
+    overflow: visible;
     gap: 0.45rem;
-    width: calc(100% + 1.8rem);
-    margin: 0 -0.9rem;
-    padding: 0.2rem 0.9rem 0.5rem 0.9rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .filter-pills::-webkit-scrollbar,
-  .category-pills::-webkit-scrollbar {
-    display: none;
+    width: 100%;
+    margin: 0;
+    padding: 0.2rem 0 0.25rem;
   }
 
   .filter-pill {
-    white-space: nowrap;
-    flex-shrink: 0;
-    scroll-snap-align: start;
+    max-width: 100%;
+    white-space: normal;
+    flex: 0 1 auto;
     padding: 0.45rem 0.85rem;
     font-size: 0.78rem;
     min-height: 38px;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: anywhere;
   }
 
   .filter-secondary-row {
@@ -3504,8 +3499,8 @@ button {
   }
 
   .unit-modal-card {
-    max-height: 92dvh;
     max-height: 92vh;
+    max-height: 92dvh;
     border-radius: 20px 20px 0 0;
     border-bottom: none;
     width: 100%;
@@ -3649,4 +3644,236 @@ button {
 @keyframes slideUpSheet {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
+}
+
+/* ==========================================================================
+   Android hardening: compact screens, landscape, foldables and keyboards
+   ========================================================================== */
+@media (max-width: 991px) {
+  /* Prevent long labels/content from forcing grid and flex tracks off-screen. */
+  .navbar-container > *,
+  .hero-container > *,
+  .calc-body-grid > *,
+  .tradein-wrapper > *,
+  .testi-showcase-grid > *,
+  .location-grid > *,
+  .footer-content-grid > *,
+  .modal-hero-split > * {
+    min-width: 0;
+  }
+
+  section {
+    scroll-margin-top: calc(64px + var(--safe-top));
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+
+  .mobile-toggle-btn,
+  .close-drawer-btn,
+  .modal-close-btn,
+  .wa-popup-close {
+    min-width: 44px;
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+
+  .mobile-drawer {
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    top: var(--safe-top);
+  }
+
+  .hero-main-img,
+  .motor-img,
+  .handover-img {
+    object-position: center;
+  }
+
+  .toast-container {
+    top: calc(0.75rem + var(--safe-top));
+    right: max(0.75rem, var(--safe-right));
+    left: max(0.75rem, var(--safe-left));
+  }
+
+  .toast {
+    width: 100%;
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  .mobile-sticky-bar {
+    left: var(--safe-left);
+    right: var(--safe-right);
+    width: auto;
+  }
+
+  .bottom-action-item {
+    min-width: 0;
+    padding-inline: 0.25rem;
+  }
+
+  .bottom-action-item span {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .modal-overlay {
+    height: 100vh;
+    height: 100dvh;
+    overscroll-behavior: contain;
+  }
+
+  .config-modal-card,
+  .wa-chat-popup {
+    max-height: 90vh;
+    max-height: 90dvh;
+  }
+
+  .modal-body-scrollable,
+  .config-modal-card,
+  .wa-popup-body {
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Common 320-360px Android widths. */
+@media (max-width: 360px) {
+  :root {
+    --bottom-bar-height: 58px;
+  }
+
+  .container {
+    padding-left: max(0.7rem, var(--safe-left));
+    padding-right: max(0.7rem, var(--safe-right));
+  }
+
+  .top-badge-text .highlight-pill,
+  .dealer-phone-display i,
+  .logo-icon-box {
+    display: none;
+  }
+
+  .brand-logo {
+    gap: 0;
+  }
+
+  .brand-name {
+    font-size: 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.55rem, 8vw, 1.75rem);
+  }
+
+  .hero-pill-badge {
+    align-items: flex-start;
+    line-height: 1.35;
+  }
+
+  .hero-stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .floating-badge {
+    max-width: calc(100% - 1rem);
+  }
+
+  .badge-credit {
+    display: none;
+  }
+
+  .calculator-card,
+  .tradein-form-card,
+  .location-card,
+  .feature-card,
+  .result-box {
+    padding: 1rem;
+  }
+
+  .modal-body-scrollable,
+  .config-modal-card {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .bottom-action-item {
+    font-size: 0.64rem;
+  }
+
+  .bottom-action-item.wa-highlight {
+    padding-inline: 0.4rem;
+  }
+}
+
+/* Short landscape phones: preserve content height and reduce fixed chrome. */
+@media (max-width: 991px) and (orientation: landscape) and (max-height: 520px) {
+  :root {
+    --bottom-bar-height: 52px;
+  }
+
+  .top-announcement-bar,
+  .brand-tagline,
+  .bottom-action-item span {
+    display: none;
+  }
+
+  .site-header,
+  .navbar-container {
+    height: 54px;
+  }
+
+  .hero-section {
+    padding-top: 1.25rem;
+  }
+
+  .mobile-sticky-bar {
+    height: calc(var(--bottom-bar-height) + var(--safe-bottom));
+  }
+
+  .mobile-drawer-links {
+    margin-top: 0.75rem;
+    gap: 0.25rem;
+  }
+
+  .mobile-nav-link {
+    padding-block: 0.6rem;
+  }
+
+  .unit-modal-card,
+  .config-modal-card,
+  .wa-chat-popup {
+    max-height: 100vh;
+    max-height: 100dvh;
+    border-radius: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

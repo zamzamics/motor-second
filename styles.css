@@ -2891,40 +2891,81 @@ button {
 
 /* Mobile Screens - Android Devices (<= 768px) */
 @media (max-width: 768px) {
-  /* Top Announcement Bar */
+  .container {
+    padding-left: max(0.9rem, var(--safe-left));
+    padding-right: max(0.9rem, var(--safe-right));
+  }
+
+  /* Top Announcement Bar - Clean Single Line Marquee/Ticker on Android */
   .top-announcement-bar {
-    padding: 0.35rem 0;
-    font-size: 0.74rem;
-  }
-
-  .top-bar-content {
-    justify-content: center;
-    gap: 0.35rem 0.75rem;
-  }
-
-  .top-badge-text {
-    font-size: 0.73rem;
-    text-align: center;
-  }
-
-  .top-badge-text span:last-child {
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
+    padding: 0.4rem 0;
+    font-size: 0.72rem;
     overflow: hidden;
   }
 
-  .top-actions {
-    gap: 0.65rem;
+  .top-bar-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+    width: 100%;
   }
 
+  .top-badge-text {
+    font-size: 0.72rem;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+    flex: 1 1 auto;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .top-badge-text span:last-child {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .highlight-pill {
+    padding: 0.12rem 0.45rem;
+    font-size: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .top-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+  }
+
+  /* Hide the long button in topbar on mobile to prevent clutter, accessible in hamburger menu */
   .top-config-btn {
-    font-size: 0.7rem;
-    padding: 0.15rem 0.4rem;
+    display: none;
   }
 
   .dealer-phone-display {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  /* Mobile Drawer config item button styling */
+  .mobile-config-item {
+    width: 100%;
+    text-align: left;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    color: var(--accent-primary);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px dashed rgba(245, 158, 11, 0.3);
   }
 
   /* Header adjustments: hide header WA button since sticky bottom bar has it */
